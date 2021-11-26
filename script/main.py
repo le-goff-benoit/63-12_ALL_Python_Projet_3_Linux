@@ -13,4 +13,4 @@ server.connect()
 server.check_connection()
 
 correct_file = File('./test/Projet3_Group1_FichierValide.csv')
-print(correct_file.get_headers())
+print(correct_file.print_file())
