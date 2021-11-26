@@ -23,9 +23,9 @@ class Server:
         output_ftp = FTP(self.ftp_output.url)
         output_ftp.login(self.ftp_output.username, self.ftp_output.password)
         if output_ftp.getwelcome() == '220 83.166.138.115 FTP server ready':
-            self.ftp_output_connected = True        
+            self.ftp_output_connected = True     
     
-    def get_server_info(self):
+    def get_info(self):
         print('##### Input FTP #####')
         print('Server host: ', self.ftp_input.url)
         print('Server repository: ', self.ftp_input.repo)
