@@ -1,8 +1,4 @@
-# 63-12_ALL_Python_Projet_3_Linux
-
-## But
-
-Projet 3: Récolte et nettoyage de données automatisées (LINUX)
+# 63-12_ALL_Projet 3: Récolte et nettoyage de données automatisées (LINUX)
 
 ## Consigne
 
