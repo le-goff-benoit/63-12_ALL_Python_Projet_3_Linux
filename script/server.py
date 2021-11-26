@@ -45,3 +45,7 @@ class Server:
         else:
             print('Problem with connection to FTP servers')
             return False
+
+    def waiting_for_input_file(self):
+        print("Ecrire une méthode qui attend qui wait une action sur le serveurr")
+    
