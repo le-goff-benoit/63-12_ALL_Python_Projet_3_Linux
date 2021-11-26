@@ -47,12 +47,19 @@ Le script Python, remis comme code de preuve de la réalisation du projet doit :
 
 ## Informations techniques
 
-### Accès FTP
+### FTP Input
 
 * Hote : d73kw.ftp.infomaniak.com
-* Username : d73kw_projet3_groupe1
+* Username : d73kw_projet3_groupe1_i
 * Password : 6zNr8c9TrHV4
-* repertoire cible : /Cours/Projet3/Groupe1
+* Repertoire cible : /Cours/Projet3/Groupe1/Input
+
+### FTP Output
+
+* Hote : d73kw.ftp.infomaniak.com
+* Username : d73kw_projet3_groupe1_o
+* Password : 84JN59cHQbvg
+* Repertoire cible : /Cours/Projet3/Groupe1/Output
   
 ## Fichiers de tests
 
