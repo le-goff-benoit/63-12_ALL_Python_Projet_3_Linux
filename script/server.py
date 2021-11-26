@@ -15,19 +15,15 @@ class Server:
         self.ftp_output = ftp_output
         self.ftp_output_connected = False
 
-    def connect(self, type):
-        if type == 'input':
-            input_ftp = FTP(self.ftp_input.url)
-            input_ftp.login(self.ftp_input.username, self.ftp_input.password)
-            if input_ftp.getwelcome() == '220 83.166.138.115 FTP server ready':
-                self.ftp_input_connected = True
-        elif type == 'output':
-            output_ftp = FTP(self.ftp_output.url)
-            output_ftp.login(self.ftp_output.username, self.ftp_output.password)
-            if output_ftp.getwelcome() == '220 83.166.138.115 FTP server ready':
-                self.ftp_output_connected = True        
-        else:
-            print('Host type provided is incorrect, please choose input or output')
+    def connect(self):
+        input_ftp = FTP(self.ftp_input.url)
+        input_ftp.login(self.ftp_input.username, self.ftp_input.password)
+        if input_ftp.getwelcome() == '220 83.166.138.115 FTP server ready':
+            self.ftp_input_connected = True
+        output_ftp = FTP(self.ftp_output.url)
+        output_ftp.login(self.ftp_output.username, self.ftp_output.password)
+        if output_ftp.getwelcome() == '220 83.166.138.115 FTP server ready':
+            self.ftp_output_connected = True        
     
     def get_server_info(self):
         print('##### Input FTP #####')

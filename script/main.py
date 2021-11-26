@@ -5,7 +5,6 @@ output_ftp_host = Host('output', 'd73kw.ftp.infomaniak.com', './Cours/Projet3/Gr
 
 server = Server(input_ftp_host, output_ftp_host)
 
-server.connect('input')
-server.connect('output')
+server.connect()
 
 server.check_connection()
