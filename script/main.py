@@ -1,3 +1,4 @@
+from file import File
 from server import Host, Server
 
 # Host configuration
@@ -10,3 +11,6 @@ server = Server(input_ftp_host, output_ftp_host)
 # Server connection and check all is ok
 server.connect()
 server.check_connection()
+
+correct_file = File('./test/Projet3_Group1_FichierValide.csv')
+print(correct_file.get_headers())

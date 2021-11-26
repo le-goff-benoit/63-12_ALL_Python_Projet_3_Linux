@@ -1,6 +1,4 @@
-class InvHeader:
-    def __init__(self):
-        self.headers = [
+INV__HEADERS = [
             'INV',
             'Pac',
             'DaySum',
@@ -12,13 +10,3 @@ class InvHeader:
             'Temp',
             'Uac',
         ]
-   
-
-class MainHeader:
-    inv = InvHeader()
-    def __init__(self):
-        self.headers = [
-        '#Date',
-        'Time',
-        self.inv
-    ]

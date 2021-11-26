@@ -1,7 +1,7 @@
 from ftplib import FTP
 
 class Host :
-    def __init__(self,type, host, repo, username, password):
+    def __init__(self, type, host, repo, username, password):
         self.type = type
         self.url = host
         self.repo = repo
