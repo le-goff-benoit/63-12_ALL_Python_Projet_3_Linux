@@ -7,6 +7,7 @@ class File:
         self.file = file
         self.to_check = True
         self.correct_structure = False
+        self.is_pending = True
 
     def read(self, file):
         with open(file, newline='') as csvfile:

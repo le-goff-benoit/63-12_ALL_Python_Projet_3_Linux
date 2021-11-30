@@ -1,5 +1,7 @@
 from file import File
 from constants import CORRECT_HEADERS
+from mail import Mail
+from constants import API_KEY
 from server import Host, Server
 
 # Host configuration

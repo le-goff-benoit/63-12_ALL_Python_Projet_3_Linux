@@ -1,4 +1,6 @@
 from ftplib import FTP
+from mail import Mail
+from constants import API_KEY
 
 class Host :
     def __init__(self, type, host, repo, username, password):
@@ -39,11 +41,14 @@ class Server:
         print('Server password: ', self.ftp_output.password)
 
     def check_connection(self):
+        courriel = Mail(API_KEY, 'benoit.legoff@students.hevs.ch')
         if (self.ftp_input_connected == True and self.ftp_output_connected == True):
             print('Connections to FTP servers successfull')
+            courriel.send_message('Connection success with FTP servers')
             return True
         else:
             print('Problem with connection to FTP servers')
+            courriel.send_message('Connection problem with FTP servers')
             return False
 
     def waiting_for_input_file(self):
