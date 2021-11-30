@@ -1,7 +1,6 @@
 from file import File
 from constants import CORRECT_HEADERS
-from mail import Mail
-from constants import API_KEY
+from mail import Email
 from server import Host, Server
 
 # Host configuration
@@ -17,3 +16,5 @@ server.check_connection()
 
 correct_file = File('./test/Projet3_Group1_FichierValide.csv')
 print(correct_file.global_check(CORRECT_HEADERS))
+mail = Email('benoit.le.goff@icloud.com' )
+mail.send_message('Fdfdfdf')

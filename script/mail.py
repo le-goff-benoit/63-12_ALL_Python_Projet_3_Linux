@@ -1,17 +1,24 @@
-import requests
+from constants import API_KEY
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
-class Mail:
 
-    def __init__(self, apikey, email_to):
-        self.apikey = apikey
+class Email:
+    def __init__(self, email_to):
         self.email_to = email_to
 
     def send_message(self, subject):
-        return requests.post(
-            "https://api.mailgun.net/v3/sandbox91ef0ba9632b459c8e56c4ab5fdb6b59.mailgun.org/messages",
-            auth=("api", self.apikey),
-            data={"from": "CSV Server <postmaster@sandbox91ef0ba9632b459c8e56c4ab5fdb6b59.mailgun.org>",
-                "to": self.email_to,
-                "subject": subject,
-                "text": ""}
-            )
+        message = Mail(
+        from_email='benoit.le.goff@icloud.com',
+        to_emails='benoit.le.goff@icloud.com',
+        subject='Sending with Twilio SendGrid is Fun',
+        html_content='<strong>and easy to do anywhere, even with Python</strong>')
+        try:
+            sg = SendGridAPIClient(API_KEY)
+            response = sg.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+        except Exception as e:
+            print(e.message)
