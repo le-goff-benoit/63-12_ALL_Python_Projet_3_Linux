@@ -1,12 +1,1 @@
-INV__HEADERS = [
-            'INV',
-            'Pac',
-            'DaySum',
-            'Status',
-            'Pdc1',
-            'Pdc2',
-            'Udc1',
-            'Udc2',
-            'Temp',
-            'Uac',
-        ]
+CORRECT_HEADERS = ['#Date', 'Time', 'INV', 'Pac', 'DaySum', 'Status', 'Temp', 'Uac', 'INV', 'Pac', 'Status', 'Temp', 'Uac', 'INV', 'Pac', 'DaySum', 'Status', 'Pdc1', 'Pdc2', 'Udc1', 'Udc2', 'Temp', 'Uac', 'INV', 'Pac', 'DaySum', 'Status', 'Temp', 'Uac', 'INV', 'Pac', 'DaySum', 'Status', 'Temp', 'Uac', 'INV', 'Pac', 'DaySum', 'Status', 'Pdc1', 'Pdc2', 'Udc1', 'Udc2', 'Temp', 'Uac', 'INV', 'Pac', 'DaySum', 'Status', 'Pdc1', 'Pdc2', 'Udc1', 'Udc2', 'Temp', 'Uac', 'INV', 'Pac', 'DaySum', 'Status', 'Pdc1', 'Pdc2', 'Udc1', 'Udc2', 'Temp', 'Uac']

@@ -1,4 +1,5 @@
 from file import File
+from constants import CORRECT_HEADERS
 from server import Host, Server
 
 # Host configuration
@@ -13,4 +14,4 @@ server.connect()
 server.check_connection()
 
 correct_file = File('./test/Projet3_Group1_FichierValide.csv')
-print(correct_file.print_file())
+print(correct_file.global_check(CORRECT_HEADERS))

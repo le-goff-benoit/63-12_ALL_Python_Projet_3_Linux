@@ -10,6 +10,8 @@ Dans un premier temps, le script doit vérifier que le fichier reçu contient to
 
 Dans un second temps si le fichier est valide, le script vérifie que les données (les lignes) contenues dans le fichier test (valide) sont corrects. Certaines lignes du fichier de test (valide) vont avoir des erreurs (un string à la place d’un double, des données manquantes, etc…).
 
+Additionner les colonnes identiques nommé : « Daysum » sur chaque ligne pour n’en faire plus qu’une par ligne avec la somme de tous les « Daysum » qui s’appellera « DaysumTot »
+
 * Le script doit, une fois le fichier récupéré, réaliser un nettoyage automatisé des lignes erronées (suppression de la ligne en question).
 
 * Une fois le nettoyage réalisé, le script doit envoyer sur un second FTP le nouveau fichier nettoyé.
