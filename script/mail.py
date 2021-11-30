@@ -13,5 +13,5 @@ class Mail:
             data={"from": "CSV Server <postmaster@sandbox91ef0ba9632b459c8e56c4ab5fdb6b59.mailgun.org>",
                 "to": self.email_to,
                 "subject": subject,
-                "text": "Congratulations Benoît Le Goff, you just sent an email with Mailgun!  You are truly awesome!"}
+                "text": ""}
             )
