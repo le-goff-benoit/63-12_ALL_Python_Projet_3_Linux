@@ -1,6 +1,6 @@
 import csv
 
-from constants import CORRECT_HEADERS
+from constants import __CORRECT_HEADERS__
 
 class File:
     def __init__(self, file):
@@ -24,7 +24,7 @@ class File:
         return headers
     
     def compare_headers_lenght(self, headers_to_test):
-        if len(headers_to_test) == len(CORRECT_HEADERS):
+        if len(headers_to_test) == len(__CORRECT_HEADERS__):
             return True
         else:
             return False
@@ -32,7 +32,7 @@ class File:
     def compare_headers(self, headers_to_test):
         headers_check = True
         for item in headers_to_test:
-            if item in CORRECT_HEADERS:
+            if item in __CORRECT_HEADERS__:
                 pass
             else:
                 headers_check = False
@@ -44,3 +44,5 @@ class File:
             return True
         else:
             return False
+
+            qyfvhrtfqzcoynzc

@@ -1,6 +1,4 @@
 from ftplib import FTP
-from mail import Mail
-from constants import API_KEY
 
 class Host :
     def __init__(self, type, host, repo, username, password):
