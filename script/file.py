@@ -1,4 +1,4 @@
-import csv
+import csv, os
 
 from constants import __CORRECT_HEADERS__
 
@@ -8,6 +8,10 @@ class File:
         self.to_check = True
         self.correct_structure = False
         self.is_pending = True
+        self.name = self.extract_file_name()
+
+    def extract_file_name(self):
+        return os.path.basename(self.file)
 
     def read(self, file):
         with open(file, newline='') as csvfile:
@@ -44,5 +48,3 @@ class File:
             return True
         else:
             return False
-
-            qyfvhrtfqzcoynzc
