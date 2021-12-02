@@ -1,5 +1,4 @@
 import time
-from file import File
 from constants import __CORRECT_HEADERS__
 from contact import Contact
 from server import Host, Server
