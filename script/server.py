@@ -1,5 +1,7 @@
 from ftplib import FTP
 
+from file import File
+
 class Host :
     def __init__(self, type, host, repo, username, password):
         self.type = type
@@ -23,7 +25,8 @@ class Server:
         output_ftp = FTP(self.ftp_output.url)
         output_ftp.login(self.ftp_output.username, self.ftp_output.password)
         if output_ftp.getwelcome() == '220 83.166.138.115 FTP server ready':
-            self.ftp_output_connected = True     
+            self.ftp_output_connected = True
+        return [input_ftp, output_ftp]
     
     def get_info(self):
         print('##### Input FTP #####')
@@ -49,3 +52,49 @@ class Server:
     def waiting_for_input_file(self):
         print("Ecrire une méthode qui attend qui wait une action sur le serveurr")
     
+    def get_filenames(self, host:Host, directory):
+        if host.type == 'input':
+            ftp = self.connect()[0]
+        if host.type == 'output':
+            ftp = self.connect()[1]
+        ftp.cwd(directory)
+        filenames = ftp.nlst()
+        ftp.close()
+        return filenames 
+    
+    def upload_file(self,directory, host:Host, file: File):
+        if host.type == 'input':
+            ftp = self.connect()[0]
+        if host.type == 'output':
+            ftp = self.connect()[1]
+        file_to_send = open(file.file,'rb')  
+        ftp.cwd(directory)
+        if self.check_file_present(host, file.name, directory):
+            print('Ce fichier est déjà présent sur', host.url, ', annulation...')
+        else:
+            status = ftp.storlines('STOR ' + file.name, file_to_send)
+            if status == '226 Transfer complete':
+                print('Transfert du fichier effectué vers', host.url)
+            else:
+                print("Une erreur est survenue lors de l'envoi du fichier vers ", host.url)
+            file_to_send.close()                                    
+            ftp.quit()
+    
+    def check_file_present(self, host:Host, filename, directory):
+        filenames = self.get_filenames(host, directory)
+        if filename in filenames:
+            return True
+        else:
+            return False
+    
+    def download_file(self, directory, host:Host, file_name):
+        if host.type == 'input':
+            ftp = self.connect()[0]
+        if host.type == 'output':
+            ftp = self.connect()[1]
+        ftp.cwd(directory)
+        if self.check_file_present(host, file_name, directory):
+            file_to_download = open(file_name,'wb')  
+            ftp.retrbinary('RETR %s' % file_name, file_to_download.write)
+        else:
+            print("Ce fichier n'est pas présent sur ftp", host.url)

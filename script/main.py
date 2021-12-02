@@ -1,6 +1,5 @@
 from file import File
 from constants import __CORRECT_HEADERS__
-from mail import Mail
 from contact import Contact
 from server import Host, Server
 
@@ -19,11 +18,12 @@ cosette = Contact('Cosette', 'cosette.bot@gmail.com')
 server.connect()
 server.check_connection()
 
-correct_file = File('./test/Projet3_Group1_FichierValide.csv' )
+correct_file = File('./test/Projet3_Group1_FichierValide_test.csv' )
+server.upload_file('.', input_ftp_host, correct_file)
 
-print(correct_file.global_check(__CORRECT_HEADERS__))
-print(type(__CORRECT_HEADERS__))
+print(server.get_filenames(input_ftp_host, '.'))
+server.download_file('.', input_ftp_host, 'Projet3_Group1_FichierValide_test23.csv')
 
-mail = Mail(correct_file)
-mail.send_success_message([benoit, cosette])
-mail.send_failed_message([cosette])
+#mail = Mail(correct_file)
+#mail.send_success_message([benoit, cosette])
+#mail.send_failed_message([cosette])

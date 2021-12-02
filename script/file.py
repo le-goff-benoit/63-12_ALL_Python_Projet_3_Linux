@@ -9,6 +9,7 @@ class File:
         self.correct_structure = False
         self.is_pending = True
         self.name = self.extract_file_name()
+        self.headers = self.get_headers()
 
     def extract_file_name(self):
         return os.path.basename(self.file)
@@ -26,25 +27,10 @@ class File:
                     headers = column.split(';')
                 break
         return headers
-    
-    def compare_headers_lenght(self, headers_to_test):
-        if len(headers_to_test) == len(__CORRECT_HEADERS__):
-            return True
-        else:
-            return False
 
-    def compare_headers(self, headers_to_test):
-        headers_check = True
-        for item in headers_to_test:
-            if item in __CORRECT_HEADERS__:
-                pass
-            else:
-                headers_check = False
-                break
-        return headers_check
-    
-    def global_check(self, headers_to_test):
-        if self.compare_headers_lenght(headers_to_test) and self.compare_headers(headers_to_test):
+    def compare_headers (self):
+        list_dif = [i for i in self.headers + __CORRECT_HEADERS__ if i not in self.headers or i not in __CORRECT_HEADERS__]
+        if not list_dif:
             return True
         else:
             return False
