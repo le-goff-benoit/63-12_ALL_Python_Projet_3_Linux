@@ -19,8 +19,7 @@ cosette = Contact('Cosette', 'cosette.bot@gmail.com')
 server.connect()
 server.check_connection()
 
-correct_file = File('./test/Projet3_Group1_FichierValide_test.csv' )
-
+# Start of the listening loop (Exit from CTRL+C)
 while True:
     print(server.get_filenames(input_ftp_host, '.')[1], 'fichiers sont présent sur', input_ftp_host.url)
     time.sleep(10)
