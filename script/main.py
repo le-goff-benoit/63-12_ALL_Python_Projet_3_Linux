@@ -1,3 +1,4 @@
+import time
 from file import File
 from constants import __CORRECT_HEADERS__
 from contact import Contact
@@ -19,10 +20,11 @@ server.connect()
 server.check_connection()
 
 correct_file = File('./test/Projet3_Group1_FichierValide_test.csv' )
-server.upload_file('.', input_ftp_host, correct_file)
 
-print(server.get_filenames(input_ftp_host, '.'))
-server.download_file('.', input_ftp_host, 'Projet3_Group1_FichierValide_test23.csv')
+while True:
+    print(server.get_filenames(input_ftp_host, '.')[1], 'fichiers sont présent sur', input_ftp_host.url)
+    time.sleep(10)
+
 
 #mail = Mail(correct_file)
 #mail.send_success_message([benoit, cosette])

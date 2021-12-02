@@ -60,7 +60,7 @@ class Server:
         ftp.cwd(directory)
         filenames = ftp.nlst()
         ftp.close()
-        return filenames 
+        return [filenames, len(filenames)]
     
     def upload_file(self,directory, host:Host, file: File):
         if host.type == 'input':
@@ -81,7 +81,7 @@ class Server:
             ftp.quit()
     
     def check_file_present(self, host:Host, filename, directory):
-        filenames = self.get_filenames(host, directory)
+        filenames = self.get_filenames(host, directory)[0]
         if filename in filenames:
             return True
         else:
@@ -98,3 +98,31 @@ class Server:
             ftp.retrbinary('RETR %s' % file_name, file_to_download.write)
         else:
             print("Ce fichier n'est pas présent sur ftp", host.url)
+    
+    def delete_file(self, directory, host:Host, file_name):
+        if host.type == 'input':
+            ftp = self.connect()[0]
+        if host.type == 'output':
+            ftp = self.connect()[1]
+        ftp.cwd(directory)
+        if self.check_file_present(host, file_name, directory):
+            ftp.delete(directory + '/' + file_name)
+            print(file_name, 'a été suprimée avec succès')
+        else:
+            print("Ce fichier n'est pas présent sur ftp", host.url)
+    
+    def create_directory(self, parent_directory, host:Host, directory_name):
+        if host.type == 'input':
+            ftp = self.connect()[0]
+        if host.type == 'output':
+            ftp = self.connect()[1]
+        ftp.cwd(parent_directory)
+        ftp.mkd(directory_name)
+
+    def get_directories(self, parent_directory, host:Host):
+        if host.type == 'input':
+            ftp = self.connect()[0]
+        if host.type == 'output':
+            ftp = self.connect()[1]
+        ftp.cwd(parent_directory)
+        return ftp.dir()
