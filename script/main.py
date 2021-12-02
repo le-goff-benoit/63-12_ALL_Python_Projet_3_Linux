@@ -24,8 +24,3 @@ correct_file = File('./test/Projet3_Group1_FichierValide_test.csv' )
 while True:
     print(server.get_filenames(input_ftp_host, '.')[1], 'fichiers sont présent sur', input_ftp_host.url)
     time.sleep(10)
-
-
-#mail = Mail(correct_file)
-#mail.send_success_message([benoit, cosette])
-#mail.send_failed_message([cosette])
