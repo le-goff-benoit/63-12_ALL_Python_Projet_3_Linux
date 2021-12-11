@@ -1,10 +1,11 @@
 import time
-from constants import __CORRECT_HEADERS__
+from constants import __CORRECT_HEADERS_WITH_TYPES__
 from contact import Contact
 from server import Host, Server
 from mail import Mail
 from file import File
 import pathlib
+from utils import autoconvert
 
 # Host configuration
 input_ftp_host = Host('input', 'd73kw.ftp.infomaniak.com',
@@ -73,7 +74,9 @@ while True:
             print("Ces fichiers vont être traités :")
             for file in files_checked:
                 for row in file.dict_read():
-                    print(row)
+                    for cell in row:
+                        row[cell] = autoconvert(row[cell])
+                        print(cell, ':', row[cell], type(row[cell]))
         else:
             print("Aucun fichier n'est disponible pour téléchargement")
     else:

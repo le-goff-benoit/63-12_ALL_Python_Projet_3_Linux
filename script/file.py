@@ -1,6 +1,6 @@
 import csv, os
 
-from constants import __CORRECT_HEADERS__
+from constants import __CORRECT_HEADERS_WITH_TYPES__
 
 
 class File:
@@ -36,8 +36,10 @@ class File:
 
     def compare_headers(self):
         list_dif = [
-            i for i in self.headers + __CORRECT_HEADERS__
-            if i not in self.headers or i not in __CORRECT_HEADERS__
+            i
+            for i in self.headers + list(__CORRECT_HEADERS_WITH_TYPES__.keys())
+            if i not in self.headers
+            or i not in list(__CORRECT_HEADERS_WITH_TYPES__.keys())
         ]
         if not list_dif:
             return True
