@@ -4,8 +4,8 @@ from constants import __EMAIL_ADRESS__, __EMAIL_PASSWORD__
 from contact import Contact
 from file import File
 
-class Mail:
 
+class Mail:
     def __init__(self, file: File):
         self.port = 587
         self.smtp_server_domain_name = "smtp.gmail.com"
@@ -14,21 +14,24 @@ class Mail:
         self.file = file.name
 
     def connect(self):
-        server = smtplib.SMTP(self.smtp_server_domain_name, self.port)  
+        server = smtplib.SMTP(self.smtp_server_domain_name, self.port)
         server.ehlo()
         server.starttls()
         server.ehlo()
         server.login(self.sender_mail, self.password)
         return server
-    
+
     def compute_subject(self):
         return ("Informations à propos du fichier : " + self.file)
-    
+
     def compute_message(self, state, lines_count=0):
         if state and lines_count != 0:
-            return (str(lines_count) + " lignes ont été supprimées pour traiter le fichier " + self.file + " avec réussite.")
+            return (str(lines_count) +
+                    " lignes ont été supprimées pour traiter le fichier " +
+                    self.file + " avec réussite.")
         else:
-            return ("Le fichier " + self.file + " n'a pas été traité suite à une erreur")
+            return ("Le fichier " + self.file +
+                    " n'a pas été traité suite à une erreur")
 
     def send_success_message(self, recipients: list[Contact]):
         for recipient in recipients:

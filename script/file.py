@@ -2,6 +2,7 @@ import csv, os
 
 from constants import __CORRECT_HEADERS__
 
+
 class File:
     def __init__(self, file):
         self.file = file
@@ -14,11 +15,16 @@ class File:
     def extract_file_name(self):
         return os.path.basename(self.file)
 
-    def read(self, file):
-        with open(file, newline='') as csvfile:
-            reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-            return reader
-    
+    def read(self):
+        file = open(self.file, newline='')
+        reader = csv.reader(file, delimiter=';', quotechar='|')
+        return reader
+
+    def dict_read(self):
+        file = open(self.file, newline='')
+        reader = csv.DictReader(file, delimiter=';', quotechar='|')
+        return reader
+
     def get_headers(self):
         with open(self.file, newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
@@ -28,8 +34,11 @@ class File:
                 break
         return headers
 
-    def compare_headers (self):
-        list_dif = [i for i in self.headers + __CORRECT_HEADERS__ if i not in self.headers or i not in __CORRECT_HEADERS__]
+    def compare_headers(self):
+        list_dif = [
+            i for i in self.headers + __CORRECT_HEADERS__
+            if i not in self.headers or i not in __CORRECT_HEADERS__
+        ]
         if not list_dif:
             return True
         else:
