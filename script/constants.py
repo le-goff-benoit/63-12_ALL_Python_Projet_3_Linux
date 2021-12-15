@@ -1,6 +1,8 @@
+# Déclaration des constantes utilisés dans le script
+
 __CORRECT_HEADERS_WITH_TYPES__ = {
-    '#Date': 'Date',
-    'Time': 'Time',
+    '#Date': 'datetime.date',
+    'Time': 'datetime.time',
     'INV': 'int',
     'Pac': 'int',
     'DaySum': 'int',

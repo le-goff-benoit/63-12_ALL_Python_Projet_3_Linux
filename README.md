@@ -31,7 +31,7 @@ La documentation doit inclure les points importants du développement suivants :
 
 * Explication de la mise en place de l’environnement
 * Description des principales fonctions du code
-* Visuel + explications du cheminement des fichiers (automatisation du processus visio ou autre)
+* Visuel + explications du cheminement des fichiers csv (automatisation du processus visio ou autre)
 
 Le script Python, remis comme code de preuve de la réalisation du projet doit :
 

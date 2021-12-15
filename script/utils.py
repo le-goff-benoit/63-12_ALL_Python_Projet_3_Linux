@@ -1,44 +1,25 @@
-from datetime import datetime, time
+from datetime import date, datetime, time
 
 
-def is_a_boolean(str):
-    if str == 'True':
-        return True
-    if str == 'False':
-        return False
-    raise ValueError("huh?")
-
-
+# Est-ce que texte proposé est dans un format de date ?
 def is_a_date(str):
-    date = [int(item) for item in str.split('.')]
-    for part in date:
-        part = int(part)
-    if date[0] > 0 and date[0] < 32:
-        if date[1] > 0 and date[1] < 13:
-            if date[2] > 0:
-                return datetime.strptime(str, '%d.%m.%y')
+    date = [item for item in str.split('.')]
+    if len(date) == 3:
+        if int(date[0]) > 0 and int(date[0]) < 32:
+            if int(date[1]) > 0 and int(date[1]) < 13:
+                if int(date[2]) > 0:
+                    return datetime.strptime(str, '%d.%m.%Y').date()
     else:
         return False
 
 
+# Est-ce que texte proposé est dans un format de temps ?
 def is_a_time(str):
-    time = [int(item) for item in str.split(':')]
-    for part in time:
-        part = int(part)
-    if time[0] > 0 and time[0] < 25:
-        if time[1] > 0 and time[1] < 60:
-            if time[2] > 0 and time[2] < 60:
-                return datetime.time(hour=time[0],
-                                     minute=time[1],
-                                     second=time[2])
+    time = [item for item in str.split(':')]
+    if len(time) == 3:
+        if int(time[0]) >= 0 and int(time[0]) < 25:
+            if int(time[1]) >= 0 and int(time[1]) < 60:
+                if int(time[2]) >= 0 and int(time[2]) < 60:
+                    return datetime.strptime(str, '%H:%M:%S').time()
     else:
         return False
-
-
-def autoconvert(str):
-    for type in (is_a_boolean, int, float, is_a_time, is_a_date):
-        try:
-            return type(str)
-        except ValueError:
-            pass
-    return str
