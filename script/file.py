@@ -19,16 +19,14 @@ class File:
 
     # Comparaison des en-têtes avec les valeurs par défaut provenant de constants.py
     def compare_headers(self):
-        list_dif = [
-            i
-            for i in self.headers + list(__CORRECT_HEADERS_WITH_TYPES__.keys())
-            if i not in self.headers
-            or i not in list(__CORRECT_HEADERS_WITH_TYPES__.keys())
-        ]
-        if not list_dif:
-            return True
-        else:
-            return False
+        header_check = True
+        headers = self.get_header('brut')
+        for item in headers:
+            if item in __CORRECT_HEADERS_WITH_TYPES__.keys():
+                pass
+            else:
+                header_check = False
+                break
 
     # Lecture du fichier csv local/distant et transformation en pandas/dataframe
     def read(self):

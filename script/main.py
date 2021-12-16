@@ -29,10 +29,6 @@ server.check_directories()
 
 # Pandas configuration
 pandas.set_option('display.max_rows', None)
-print(server.get_filenames(output_ftp_host, '.'))
-
-file = File('Projet3_Group1_FichierNonValide.csv')
-server.upload_file('.', input_ftp_host, file)
 
 # Event loop
 while True:
@@ -62,7 +58,7 @@ while True:
             # Check des headers du fichier par comparaison
             if files_to_check:
                 for file in files_to_check:
-                    if True:
+                    if file.compare_headers():
                         files_checked.append(file)
                     else:
                         # Déplacement du fichier problématique vers un dossier Erreur
