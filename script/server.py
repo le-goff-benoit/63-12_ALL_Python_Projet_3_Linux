@@ -70,7 +70,12 @@ class Server:
         return [filenames, len(filenames)]
 
     # Upload d'un fichier dans le host, directory mentionné avec traitement en cas de fichier déjà présent
-    def upload_file(self, directory, host: Host, file: File):
+    def upload_file(self,
+                    directory,
+                    host: Host,
+                    file: File,
+                    force=False,
+                    display=False):
         if host.type == 'input':
             ftp = self.connect()[0]
         if host.type == 'output':
@@ -78,14 +83,15 @@ class Server:
         file_to_send = open(file.file, 'rb')
         ftp.cwd(directory)
         if self.check_file_present(host, file.name,
-                                   directory) and host.type == 'input':
+                                   directory) and force == False:
             print('Ce fichier "', file.name, '" est déjà présent sur',
                   host.url, ', annulation...')
         else:
             status = ftp.storlines('STOR ' + file.name, file_to_send)
             if status == '226 Transfer complete':
-                print('Transfert du fichier"', file.name, '" effectué vers',
-                      host.url)
+                if display:
+                    print('Transfert du fichier"', file.name,
+                          '" effectué vers', host.url)
             else:
                 print(
                     "Une erreur est survenue lors de l'envoi du fichier vers ",
@@ -115,7 +121,7 @@ class Server:
             print("Ce fichier n'est pas présent sur ftp", host.url)
 
     # Suppression d'un fichier
-    def delete_file(self, directory, host: Host, file_name):
+    def delete_file(self, directory, host: Host, file_name, display=False):
         if host.type == 'input':
             ftp = self.connect()[0]
         if host.type == 'output':
@@ -123,7 +129,8 @@ class Server:
         ftp.cwd(directory)
         if self.check_file_present(host, file_name, directory):
             ftp.delete(directory + '/' + file_name)
-            print(file_name, 'a été suprimée avec succès')
+            if display:
+                print(file_name, 'a été suprimée avec succès')
         else:
             print("Ce fichier n'est pas présent sur ftp", host.url)
 

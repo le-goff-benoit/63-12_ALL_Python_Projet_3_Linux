@@ -27,6 +27,7 @@ class File:
             else:
                 header_check = False
                 break
+        return header_check
 
     # Lecture du fichier csv local/distant et transformation en pandas/dataframe
     def read(self):
