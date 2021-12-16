@@ -16,3 +16,4 @@ __CORRECT_HEADERS_WITH_TYPES__ = {
 }
 __EMAIL_ADRESS__ = '6312.ALL.Projet3.Groupe4@gmail.com'
 __EMAIL_PASSWORD__ = 'Mondiale0'
+__WAITING_TIME__ = 15

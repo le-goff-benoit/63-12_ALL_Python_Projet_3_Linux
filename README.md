@@ -1,5 +1,11 @@
 # 63-12_ALL_Projet 3: Récolte et nettoyage de données automatisées (LINUX)
 
+## Utilisation
+
+```bash
+python3 script/main.py
+```
+
 ## Consigne
 
 ### Description

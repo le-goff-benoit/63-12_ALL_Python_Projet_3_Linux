@@ -1,7 +1,6 @@
 from os import truncate
 import time
-import pandas
-from constants import __CORRECT_HEADERS_WITH_TYPES__
+from constants import __CORRECT_HEADERS_WITH_TYPES__, __WAITING_TIME__
 from contact import Contact
 from server import Host, Server
 from file import File
@@ -128,4 +127,4 @@ while True:
         )
 
     # Temps d'attente avec nouvelle tentative
-    time.sleep(15)
+    time.sleep(__WAITING_TIME__)
